@@ -1,15 +1,8 @@
-<a href="https://www.twilio.com">
-  <img src="https://static0.twilio.com/marketing/bundles/marketing/img/logos/wordmark-red.svg" alt="Twilio" width="250" />
-</a>
-
 # Click to Call with Flask
 
-This is an application example implementing Click to Call using Twilio.
+This is a fork of an application example implementing Click to Call using Twilio. 
 
-[![Build Status](https://travis-ci.org/TwilioDevEd/clicktocall-flask.svg?branch=master)](https://travis-ci.org/TwilioDevEd/clicktocall-flask)
-[![Coverage Status](https://coveralls.io/repos/TwilioDevEd/clicktocall-flask/badge.svg)](https://coveralls.io/r/TwilioDevEd/clicktocall-flask)
-
-[Read the full tutorial here](https://www.twilio.com/docs/tutorials/walkthrough/click-to-call/python/flask)!
+At Coworker.org, we used this to support a worker-led call-in campaign. We hosted it on Heroku, so there are a few Heroku-specific files in this repo that don't exist in the original. We also added a small reporting script, `report.py`, that let us easily see how many calls were made.
 
 ## Local development
 
@@ -37,15 +30,9 @@ To run the app locally, first clone this repository and `cd` into its directory.
     pip install -r requirements.txt
     ```
 
-1. Copy the `.env.example` file to `.env`, and edit it including your credentials
-   for the Twilio API (found at https://www.twilio.com/user/account/settings). You
-   will also need a [Twilio Number](https://www.twilio.com/user/account/phone-numbers/incoming).
-1. Run `source .env` to apply the environment variables (or even better, use [autoenv](https://github.com/kennethreitz/autoenv))
-
-1. Expose your application to the wider internet using ngrok. You can click
-   [here](#expose-the-application-to-the-wider-internet) for more details. This step
-   is important because the application won't work as expected if you run it through
-   localhost.
+1. Copy the `.env.example` file to `.env`, and edit it including your credentials for the Twilio API (found at https://www.twilio.com/user/account/settings). You will also need a [Twilio Number](https://www.twilio.com/user/account/phone-numbers/incoming).
+1. Run `source .env` to apply the environment variables
+1. Expose your application to the wider internet using ngrok. You can click [here](#expose-the-application-to-the-wider-internet) for more details. This step is important because the application won't work as expected if you run it through localhost.
 
    ```bash
    $ ngrok http 5000
@@ -61,14 +48,6 @@ Once Ngrok is running, open up your browser and go to your Ngrok URL. It will
 look like this: `http://9a159ccf.ngrok.io`
 
 That's it!
-
-## Testing
-
-This app comes with a full testing suite ready for nose.
-
-```bash
-$ make test
-```
 
 ## Meta
 

@@ -3,14 +3,15 @@ from flask import jsonify
 from flask import render_template
 from flask import request
 from flask import url_for
+from flask_sslify import SSLify
 
 from twilio.twiml.voice_response import VoiceResponse
 from twilio.rest import Client
 
 # Declare and configure application
 app = Flask(__name__, static_url_path='/static')
+sslify = SSLify(app)
 app.config.from_pyfile('local_settings.py')
-
 
 # Route for Click to Call demo page.
 @app.route('/')
@@ -18,11 +19,15 @@ def index():
     return render_template('index.html',
                            configuration_error=None)
 
+@app.route('/data-use')
+def data_use():
+    return render_template('data-use.html',
+                           configuration_error=None)
 
 # Voice Request URL
 @app.route('/call', methods=['POST'])
 def call():
-    # Get phone number we need to call
+    # Get phone number that was submitted in the form
     phone_number = request.form.get('phoneNumber', None)
 
     try:
@@ -46,22 +51,10 @@ def call():
 
 @app.route('/outbound', methods=['POST'])
 def outbound():
+    script = "We're connecting you right now."
+    dial_to = "+15555555555"
+
     response = VoiceResponse()
-
-    response.say("Thank you for contacting our sales department. If this "
-                 "click to call application was in production, we would "
-                 "dial out to your sales team with the Dial verb.",
-                 voice='alice')
-    '''
-    # Uncomment this code and replace the number with the number you want
-    # your customers to call.
-    response.number("+16518675309")
-    '''
+    response.say(script, voice='alice')
+    response.dial(dial_to)
     return str(response)
-
-
-# Route for Landing Page after Heroku deploy.
-@app.route('/landing.html')
-def landing():
-    return render_template('landing.html',
-                           configuration_error=None)

@@ -9,10 +9,9 @@ setup(name='flask-clicktocall',
                   'using Twilio.',
       include_package_data=True,
       zip_safe=False,
-      packages=['clicktocall', 'tests'],
+      packages=['clicktocall'],
       license='MIT',
       install_requires=[
           'flask>=0.10',
-          'twilio>=6.0.0rc12',
-          'tox>=1.7'
+          'twilio>=6.0.0rc12'
       ])
