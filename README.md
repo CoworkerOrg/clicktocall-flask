@@ -2,7 +2,9 @@
 
 This is a fork of an application example implementing Click to Call using Twilio. 
 
-At Coworker.org, we used this to support a worker-led call-in campaign. We hosted it on Heroku, so there are a few Heroku-specific files in this repo that don't exist in the original. We also added a small reporting script, `report.py`, that let us easily see how many calls were made.
+At Coworker.org, we used this to support a worker-led call-in campaign. We hosted it on Heroku, so there are a few Heroku-specific files in this repo that don't exist in the original. We also added a small reporting script, `report.py`, that let us easily see how many calls were made. You can see screenshots in [docs/](https://github.com/CoworkerOrg/clicktocall-flask/blob/master/docs).
+
+![image of main interface](https://github.com/CoworkerOrg/clicktocall-flask/blob/master/docs/main.png)
 
 ## Local development
 
